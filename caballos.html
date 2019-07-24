@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Carrera de caballos</title>
+  </head>
+  <body>
+      <h1>Gran carrera para pasar el semestre</h1>
+      <style>
+          #container {
+            width: 800px;
+            height: 600px;
+            position: relative;
+            background: url("imagenes/pista3.jpg");
+            
+          }
+          #animate {
+            width: 50px;
+            height: 50px;
+            position: relative;
+            left:0px; 
+            top:77px;  
+          }
+          #animate1 {
+            width: 50px;
+            height: 50px;
+            position: relative;
+            left:-123px; 
+            top:280px; 
+          }
+          #animate2 {
+            width: 50px;
+            height: 50px;
+            position: relative;
+            left:-251px; 
+            top:485px; 
+          }
+          
+        </style>
+        <body>
+          
+            
+            
+          <p><button onclick="myMove()" value="jugador 1">Boton 1</button></p>
+          <p><button onclick="myMove1()">Boton 2</button></p>
+          <p><button onclick="myMove2()">Boton 3</button></p>
+      
+          <div id="container">
+            <img src="imagenes/caballo1.jpg" id="animate" class="w3-circle" alt="Norway" style="width:15%">
+            <img src="imagenes/caballo2.jpg" id="animate1" class="w3-circle" alt="Norway" style="width:15%">
+            <img src="imagenes/pony.jpg" id="animate2"class="w3-circle" alt="Norway" style="width:15%">
+          </div>
+      
+          <script>
+            var pos = 0;
+            function myMove() {
+              var element = document.getElementById("animate");
+              pos += 30;
+              element.style.left = pos + "px";
+              if (pos == 350){
+                pos -=30;
+              }
+            }
+            var pos = 0;
+            function myMove1() {
+              var element = document.getElementById("animate1");
+              pos += 30;
+              element.style.left = pos + "px";
+              if (pos == 350){
+                pos -=30;
+              }
+            }
+              var pos = 0;
+            function myMove2() {
+              var element = document.getElementById("animate2");
+              pos += 30;
+              element.style.left = pos + "px";
+              if (pos == 350){
+                pos -=30;
+              }
+            
+              
+              
+            }
+          </script>
+    
+    
+    <input type="button" value="jugador 2" id="jugador 2" >
+    <br>
+    <br>
+    <input type="button" value="ganador" id="btnganador">
+    <br>
+    <br>
+
+    <h1>Corre corre caballito</h1>
+  </body>
+  <script src="js/caballo1.js"></script>
+
+  <script>
+    
+    var animate = new Caballo("Antony", 11);
+    var animate1 = new Caballo("Jenito", 8);
+    document.getElementById("animate").addEventListener("click", function() {
+      animate.avanzar();
+    });
+
+    document.getElementById("animate1").addEventListener("click", function() {
+      animate1.avanzar();
+    });
+
+    document
+      .getElementById("btnganador")
+      .addEventListener("dblclick", function() {
+        if (animate.obtenerTotalRecorrido() > animate1.obtenerTotalRecorrido) {
+          console.log("Jugador" + animate.nombre + "ganó");
+        } else if (animate.obtenerTotalRecorrido() < animate1.obtenerTotalRecorrido()) {
+          console.log("jugador" + animate1.nombre + "ganó");
+        } else {
+          console.log("nadie gana, empate");
+        }
+
+        console.log(animate.nombre + "obtuvo:" + j1.obtenerTotalRecorrido());
+        console.log(animate1.nombre + "obtuvo:" + j2.obtenerTotalRecorrido());
+      });
+  </script>
+</html>

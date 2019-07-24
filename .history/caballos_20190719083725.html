@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Carrera de caballos</title>
+  </head>
+  <body>
+    <h1>Gran carrera para pasar el semestre</h1>
+    <input type="button" value="jugador 1" id="jugador 1" >
+    <br>
+    <br>
+    <input type="button" value="jugador 2" id="jugador 2" >
+    <br>
+    <br>
+    <input type="button" value="ganador" id="btnganador">
+    <br>
+    <br>
+
+    <h1>Corre corre caballito</h1>
+  </body>
+  <script src="../></script>
+
+  <script>
+    var j1 = new Caballo("Antony", 11);
+    var j2 = new Caballo("Jenito", 8);
+    document.getElementById("jugador 1").addEventListener("click", function() {
+      j1.avanzar();
+    });
+
+    document.getElementById("jugador 2").addEventListener("click", function() {
+      j2.avanzar();
+    });
+
+    document
+      .getElementById("btnganador")
+      .addEventListener("dblclick", function() {
+        if (j1.obtenerTotalRecorrido() > j2.obtenerTotalRecorrido) {
+          console.log("Jugador" + j1.nombre + "ganó");
+        } else if (j1.obtenerTotalRecorrido() < j2.obtenerTotalRecorrido()) {
+          console.log("jugador" + j2.nombre + "ganó");
+        } else {
+          console.log("nadie gana, empate");
+        }
+
+        console.log(j1.nombre + "obtuvo:" + j1.obtenerTotalRecorrido());
+        console.log(j2.nombre + "obtuvo:" + j2.obtenerTotalRecorrido());
+      });
+  </script>
+</html>

@@ -1,0 +1,193 @@
+<html>
+<!--en el codigo css podemos ver los tag position, para container relativo, para animation absoluto
+    esto se hace con el fin de que el contenedor se ajuste a la pagina, pero aunque -->
+<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js" charset="UTF-8"></script><style>
+    #container {
+      width: 800px;
+      height: 400px;
+      position: relative;
+      background: url("imagenes/pista3.jpg");
+    }
+
+    #animate {
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        left:0px; 
+        top:35px;
+
+    }
+
+    #animate1 {
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        left:0px; 
+        top:160px;
+
+    }
+
+    #animate2 {
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        left:0px; 
+        top:280px;
+
+    }
+</style>
+
+<body>
+        <h1>Gran carrera para pasar el semestre</h1>
+
+    <p>
+        <button id="jugador1">Jugador 1</button>
+        <br>
+        <br>
+        <button id="jugador2">Jugador 2</button>
+        <br>
+        <br>
+        <button id="jugador3">Jugador 3</button>
+        
+    </p>
+
+    <div id="container">
+            <img src="imagenes/caballo1.jpg" id="animate" style="width:10%"> 
+
+            <img src="imagenes/pony.jpg" id="animate1"style="width:10%">
+
+            <img src="imagenes/caballo2.jpg" id="animate2"style="width:10%">
+
+            
+        <div id="animate"></div>
+    </div>
+    <embed src="mp3/galope.mp3" type="" loop="true">
+
+    <script>
+
+        var j1 = new Caballo("Silver", 13);
+        var j2 = new Caballo("Caballito de Mar", 15);
+        var j3 = new Caballo("Luz", 12);
+
+        document.getElementById("jugador1")
+            .addEventListener("click", function () {
+                j1.avanzar();
+                casillas = j1.obtenetTotalRecorrido();
+                j1.myMove(acumular * casillas);
+                ++acumular;
+            });
+
+        document.getElementById("jugador2")
+            .addEventListener("click", function () {
+                j2.avanzar();
+                casillas = j2.obtenetTotalRecorrido();
+                j2.myMove1(acumular2 * casillas);
+                ++acumular2;
+            });
+
+        document.getElementById("jugador3")
+            .addEventListener("click", function () {
+                j3.avanzar();
+                casillas = j3.obtenetTotalRecorrido();
+                j3.myMove2(acumular3 * casillas);
+                ++acumular3;
+            });
+
+        var acumular = 0;
+
+        function myMove(inicio) {
+            var elem = document.getElementById("animate");
+            var pos = inicio;
+            var id = setInterval(frame, 10, inicio + 50);
+            function frame(fin) {
+                if (pos === fin) {
+                    clearInterval(id);
+                } else {
+                    pos++;
+                    elem.style.left = pos + 'px';
+                    
+                }
+            }
+
+        }
+        var acumular2 = 0;
+        function myMove1(inicio) {
+            var elem = document.getElementById("animate1");
+            var pos = inicio;
+            var id = setInterval(frame, 10, inicio + 50);
+            function frame(fin) {
+                if (pos === fin) {
+                    clearInterval(id);
+                } else {
+                    pos++;
+                    elem.style.left = pos + 'px';
+                }
+            }
+
+        }
+        var acumular3 = 0;
+        function myMove2(inicio) {
+            var elem = document.getElementById("animate2");
+            var pos = inicio;
+            var id = setInterval(frame, 10, inicio + 50);
+            function frame(fin) {
+                if (pos === fin) {
+                    clearInterval(id);
+                } else {
+                    pos++;
+                    elem.style.left = pos + 'px';
+                }
+            }
+
+        }
+
+        function Caballo(nombre, edad) {
+
+            this.nombre = nombre;
+            this.edad = edad;
+            this.totalRecorrido = [];
+
+            this.avanzar = avanzar;
+            this.myMove = myMove;
+            this.myMove1 = myMove1;
+            this.myMove2 = myMove2;
+            this.obtenetTotalRecorrido = obtenetTotalRecorrido;
+        }
+
+
+        function avanzar() {
+            var distancia = (Math.floor(Math.random() * 6) + 1) * 10;
+            this.totalRecorrido.push(distancia);
+            console.log(this.nombre + " avanzó " + distancia);
+            return distancia;
+
+        }
+
+        function obtenetTotalRecorrido() {
+            var total = this.totalRecorrido.reduce(sumar);
+            return total;
+        }
+
+        function sumar(sumaTotal, recorrido) {
+            return sumaTotal + recorrido;
+        }
+        document
+      .getElementById("btnganador")
+      .addEventListener("dblclick", function() {
+        if (animate.obtenerTotalRecorrido() > animate1.obtenerTotalRecorrido) {
+          console.log("Jugador" + animate.nombre + "ganó");
+        } else if (animate.obtenerTotalRecorrido() < animate1.obtenerTotalRecorrido()) {
+          console.log("jugador" + animate1.nombre + "ganó");
+        } else {
+          console.log("nadie gana, empate");
+        }
+
+        console.log(animate.nombre + "obtuvo:" + j1.obtenerTotalRecorrido());
+        console.log(animate1.nombre + "obtuvo:" + j2.obtenerTotalRecorrido());
+      });
+
+    </script>
+
+</body>
+
+</html>
